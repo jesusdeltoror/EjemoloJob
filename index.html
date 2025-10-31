@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HOLA MUNDO</h1>
+    <!-- Formulario para registrar -->
+    <div class="contenedor">
+        <input type="text" id="inputId" placeholder="ID">
+        <input type="text" id="inputNombre" placeholder="Nombre">
+        <input type="text" id="inputApellido" placeholder="Apellido">
+        <input type="number" id="inputEdad" placeholder="Edad">
+        <button id="btnRegistrar">Registrar</button>
+    </div>
+    <!-- Formulario para Leer -->
+    <div class="contenedor">
+        <input type="text" id="buscarId" placeholder="ID a buscar">
+        <button id="btnBuscar">Buscar</button>
+        <div id="resultadoBusqueda">
+
+        </div>
+    </div>
+
+
+    <source src="./js/index.js" type="module"></source>
 </body>
 </html>
