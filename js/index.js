@@ -1,7 +1,11 @@
 import {elementos} from "./elem.js"
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-/firestore.js";  
+  import { 
+    getFirestore,
+    doc, 
+    setDoc   
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-/firestore.js";  
 
 
   const firebaseConfig = {
@@ -19,8 +23,9 @@ import {elementos} from "./elem.js"
   const db = getFirestore(app);
 
 elementos.btnRegistrar.addEventListener('click', async()=>{
-    const id = elementos.inputId.value;
-    const nombre = elementos.inputNombre.value;
-    const apellido = elementos.inputApellido.value;
-    const edad = elementos.inputEdad.value; 
+    await setDoc(doc(db, "test", elementos.inputId.value), {
+        nombre: elementos.inputNombre.value,
+        apellido: elementos.inputApellido.value,
+        edad: elementos.inputEdad.value
+    });
 });
