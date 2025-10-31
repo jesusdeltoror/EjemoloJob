@@ -5,7 +5,9 @@ import {elementos} from "./elem.js"
     getFirestore,
     doc, 
     setDoc   
-  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-/firestore.js";  
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";  
+
+console.log("object");
 
 
   const firebaseConfig = {
@@ -23,9 +25,14 @@ import {elementos} from "./elem.js"
   const db = getFirestore(app);
 
 elementos.btnRegistrar.addEventListener('click', async()=>{
-    await setDoc(doc(db, "test", elementos.inputId.value), {
-        nombre: elementos.inputNombre.value,
-        apellido: elementos.inputApellido.value,
-        edad: elementos.inputEdad.value
-    });
+    try {
+        await setDoc(doc(db, "test", elementos.inputId.value), {
+            nombre: elementos.inputNombre.value,
+            apellido: elementos.inputApellido.value,
+            edad: elementos.inputEdad.value
+        });
+    }catch (error) {
+        console.error("Error adding document: ", error);
+    }   
 });
+
